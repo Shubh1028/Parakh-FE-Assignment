@@ -8,25 +8,36 @@ fetch("data.json")
 function createDiv(products) {
   let placeholder = document.getElementById("cosmetics-container");
   let placeholder2 = document.querySelector("#household-container");
-  let out = "";
-  let out2 = "";
-  // for (let i = 0; i < products.data.length; i++) {
-  for (let j = 0; j < products.data[0].productList.length; j++)
-    out += `
-            <li>${products.data[0].productList[j].name}  ${products.data[0].productList[j].price}<button onclick="addCart('${products.data[0].productList[j].name}')">Add To Cart</button></li> `;
+  let placeholderArr = [placeholder, placeholder2]
 
-  // }
-  for (let j = 0; j < products.data[1].productList.length; j++)
-    out2 += `
-        <li>${products.data[1].productList[j].name}  ${products.data[1].productList[j].price} <button onclick="addCart('${products.data[0].productList[j].name}')">Add To Cart</button></li> `;
-  placeholder.innerHTML = out;
-  placeholder2.innerHTML = out2;
-}
+  for(let i =0; i<products.data.length; i++){
+    let out = "";
+  for (let j = 0; j < products.data[0].productList.length; j++)
+    out += `<div class="product-container">
+    <span>Name: </span><span>${products.data[i].productList[j].name}</span><br>
+    <span>Price: </span><span>${products.data[i].productList[j].price}</span><br>
+    <button onclick="addCart('${products.data[i].productList[j].name}')">Add To Cart</button><br>
+    <button onclick="removeCart('${products.data[i].productList[j].name}')">Remove From Cart</button>
+    </div>
+    `
+    placeholderArr[i].innerHTML = out;
+  }
+} 
+
 
 let cartArr = [];
 
 function addCart(item) {
-  console.log("Item Added to cart");
+  console.log(`${item} Added to cart`);
   cartArr.push(item);
+  console.log(cartArr);
+}
+
+function removeCart(itemToRemove){
+  const index = cartArr.indexOf(itemToRemove) ;
+  if(index > -1) {
+    cartArr.splice(index,1);
+  }
+  console.log(`${itemToRemove} Removed From Cart`);
   console.log(cartArr);
 }

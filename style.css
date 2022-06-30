@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.main-box{
+    width: 80%;
+    margin: 0 auto;
+}
+.containers{
+display: flex;
+}
+.product-container {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    border: 2px solid lightseagreen;
+    margin: 1rem;
+}
+.product-container button{
+    border: none;
+    margin-top: 1rem;
+   width: 200px;
+    padding: 0.5rem;
+    background-color: lightseagreen;
+    cursor: pointer;
+}
