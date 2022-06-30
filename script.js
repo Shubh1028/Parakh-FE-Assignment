@@ -37,7 +37,9 @@ function removeCart(itemToRemove){
   const index = cartArr.indexOf(itemToRemove) ;
   if(index > -1) {
     cartArr.splice(index,1);
+    console.log(`${itemToRemove} Removed From Cart`);
+  } else {
+    console.log("Item Is Not in the cart");
   }
-  console.log(`${itemToRemove} Removed From Cart`);
   console.log(cartArr);
 }
